@@ -28,7 +28,6 @@ def home():
 def process_message():
     # Get message from the app
     userQuestion = request.json.get('message')
-    
     messages = []
     # Process the message using NLP processor
     response = invoke_chain(userQuestion,messages)
