@@ -48,9 +48,9 @@ def get_chain():
     # Create SQLAlchemy MetaData instance
     metadata = MetaData()
     # Reflect only the 'transaction' table
-    transaction_table = Table('transaction', metadata, autoload_with=engine, schema="dbo")
+    transaction_table = Table('PropertyTransactions', metadata, autoload_with=engine, schema="dbo")
     # Create a LangChain SQLDatabase instance for only the 'transaction' table
-    db = SQLDatabase(engine, include_tables=['transaction'])
+    db = SQLDatabase(engine, include_tables=['PropertyTransactions'])
     LLM = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.5)
     generate_query = create_sql_query_chain(LLM, db)
     execute_query = QuerySQLDataBaseTool(db=db)
